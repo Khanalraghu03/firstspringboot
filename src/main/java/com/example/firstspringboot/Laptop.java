@@ -2,7 +2,7 @@ package com.example.firstspringboot;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("lap1") //it will instantiate an object(new obj)
 public class Laptop {
     private int lID;
     private int ram;
@@ -34,5 +34,14 @@ public class Laptop {
 
     public void compile() {
         System.out.println("Compiling...");
+    }
+
+    @Override
+    public String toString() {
+        return "Laptop{" +
+                "lID=" + lID +
+                ", ram=" + ram +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

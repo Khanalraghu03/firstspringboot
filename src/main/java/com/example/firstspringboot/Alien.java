@@ -1,27 +1,31 @@
 package com.example.firstspringboot;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
-@Scope(value = "prototype")
+@Component //create one obj: AKA singleton
+@Scope(value = "prototype") //creates multiple obj AKA prototype
 public class Alien {
-    private String aID;
+    private int aID;
     private String aName;
+    private String tech;
+    //Autowired will look for Laptop by type
     @Autowired
-    private Laptop l1;
+    //Qualifier will look by name
+    @Qualifier("lap1")
+    private Laptop laptop;
 
     public Alien() {
-        super();
         System.out.println("Object created...");
     }
 
-    public String getaID() {
+    public int getaID() {
         return aID;
     }
 
-    public void setaID(String aID) {
+    public void setaID(int aID) {
         this.aID = aID;
     }
 
@@ -33,16 +37,24 @@ public class Alien {
         this.aName = aName;
     }
 
-    public Laptop getL1() {
-        return l1;
+    public String getTech() {
+        return tech;
     }
 
-    public void setL1(Laptop l1) {
-        this.l1 = l1;
+    public void setTech(String tech) {
+        this.tech = tech;
+    }
+
+    public Laptop getLaptop() {
+        return laptop;
+    }
+
+    public void setLaptop(Laptop laptop) {
+        this.laptop = laptop;
     }
 
     public void show() {
         System.out.println("in show");
-        l1.compile();
+        laptop.compile();
     }
 }
